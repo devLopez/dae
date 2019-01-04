@@ -1,0 +1,34 @@
+{
+    "name": "igrejanet/dae",
+    "description": "Pacote para geração de Documento de Arrecadação Estadual - MG",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matheus Lopes Santos",
+            "email": "fale_com_lopez@hotmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.5",
+        "nesbot/carbon": "1.17.*",
+        "zendframework/zend-barcode": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Igrejanet\\Dae\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5"
+    }
+}

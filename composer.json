@@ -12,7 +12,7 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.5",
-        "nesbot/carbon": "1.17.*",
+        "nesbot/carbon": "1.19.*",
         "zendframework/zend-barcode": "^2.6"
     },
     "autoload": {

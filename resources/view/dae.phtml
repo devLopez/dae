@@ -940,7 +940,7 @@
                                                         </font>
                                                     </td>
                                                     <td width="73%" align="right" valign="middle">
-                                                        <font size="2">R$&nbsp;<?= $valor ?></font>
+                                                        <font size="2">R$&nbsp;<?= number_format($valor, 2, ',', '') ?></font>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -998,7 +998,9 @@
                                                         <strong><font size="2">TOTAL</font></strong>
                                                     </td>
                                                     <td width="73%" align="right" valign="middle">
-                                                        <font size="2"><b>R$&nbsp;<?= $valor ?></b></font>
+                                                        <font size="2">
+                                                            <b>R$&nbsp;<?= number_format($valor, 2, ',', '') ?></b>
+                                                        </font>
                                                     </td>
                                                 </tr>
                                             </table>

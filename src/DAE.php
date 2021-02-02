@@ -241,7 +241,7 @@ class DAE
 
     public function setValor(float $valor): DAE
     {
-        $this->valor = number_format($valor, 2, ',', '');
+        $this->valor = $valor;
 
         return $this;
     }

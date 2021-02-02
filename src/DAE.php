@@ -5,6 +5,7 @@ namespace Igrejanet\DAE;
 use Carbon\Carbon;
 use Exception;
 use Igrejanet\DAE\Factories\LinhaDigitavelFactory;
+use stdClass;
 
 /**
  * Dae
@@ -15,122 +16,53 @@ use Igrejanet\DAE\Factories\LinhaDigitavelFactory;
  */
 class DAE
 {
-    /**
-     * @var string
-     */
-    protected $nome;
+    protected string $nome;
 
-    /**
-     * @var string
-     */
-    protected $endereco;
+    protected string $endereco;
 
-    /**
-     * @var string
-     */
-    protected $municipio;
+    protected string $municipio;
 
-    /**
-     * @var string
-     */
-    protected $uf;
+    protected string $uf;
 
-    /**
-     * @var string
-     */
-    protected $telefone;
+    protected string $telefone;
 
-    /**
-     * @var string
-     */
-    protected $documento;
+    protected string $documento;
 
-    /**
-     * @var int
-     */
-    protected $servico;
+    protected int $servico;
 
-    /**
-     * @var string
-     */
-    protected $cobranca;
+    protected string $cobranca;
 
-    /**
-     * @var Carbon
-     */
-    protected $vencimento;
+    protected Carbon $vencimento;
 
-    /**
-     * @var int
-     */
-    protected $tipoIdentificacao;
+    protected int $tipoIdentificacao;
 
-    /**
-     * @var string
-     */
-    protected $mesReferencia;
+    protected string $mesReferencia;
 
-    /**
-     * @var string
-     */
-    protected $historico;
+    protected string $historico;
 
-    /**
-     * @var string|int|float
-     */
-    protected $valor;
+    protected float $valor;
 
-    /**
-     * @var null|string
-     */
-    protected $codigoMunicipio = null;
+    protected ?string $codigoMunicipio = null;
 
-    /**
-     * @var int
-     */
-    protected $acrescimos = 0;
+    protected float $acrescimos = 0.00;
 
-    /**
-     * @var int
-     */
-    protected $juros = 0;
+    protected float $juros = 0.00;
 
-    /**
-     * @var string
-     */
-    private $nossoNumero;
+    protected string $nossoNumero;
 
-    /**
-     * @var \stdClass
-     */
-    private $linhaDigitavel;
+    protected stdClass $linhaDigitavel;
 
-    /**
-     * @var int
-     */
-    protected $orgaoDestino;
+    protected int $orgaoDestino;
 
-    /**
-     * @var string
-     */
-    protected $empresa;
+    protected string $empresa;
 
-    /**
-     * @var int
-     */
-    protected $taxa = 0;
+    protected int $taxa = 0;
 
-    /**
-     * @var int
-     */
-    protected $codigoEstadual;
+    protected int $codigoEstadual;
 
-    /**
-     * @param   array  $dados
-     */
     public function __construct(array $dados)
     {
-        foreach ( $dados as $key => $item ) {
+        foreach ($dados as $key => $item) {
             $method = 'set' . ucfirst($key);
 
             $this->$method($item);
@@ -141,18 +73,15 @@ class DAE
 
     protected function geraNossoNumero()
     {
-        $nossoNumero   = fillZero($this->servico, 2) . fillZero($this->cobranca, 9);
-        $nossoNumero  .= digitoVerificador($nossoNumero);
+        $nossoNumero = fillZero($this->servico, 2) . fillZero($this->cobranca, 9);
+        $nossoNumero .= digitoVerificador($nossoNumero);
 
         $this->geraCodigoBarras($nossoNumero);
 
         $this->nossoNumero = preg_replace('/([0-9]{2})([0-9]{9})([0-9]{2})/', '\1-\2/\3', $nossoNumero);
     }
 
-    /**
-     * @param   string  $nossoNumero
-     */
-    protected function geraCodigoBarras($nossoNumero)
+    protected function geraCodigoBarras(string $nossoNumero)
     {
         $this->linhaDigitavel = LinhaDigitavelFactory::make($this, $nossoNumero);
     }
@@ -166,7 +95,7 @@ class DAE
     }
 
     /**
-     * @param   string  $nome
+     * @param string $nome
      * @return  $this
      */
     public function setNome($nome)
@@ -185,7 +114,7 @@ class DAE
     }
 
     /**
-     * @param   string  $endereco
+     * @param string $endereco
      * @return  $this
      */
     public function setEndereco($endereco)
@@ -204,7 +133,7 @@ class DAE
     }
 
     /**
-     * @param   string  $municipio
+     * @param string $municipio
      * @return  $this
      */
     public function setMunicipio($municipio)
@@ -223,13 +152,13 @@ class DAE
     }
 
     /**
-     * @param   string  $uf
+     * @param string $uf
      * @return  $this
      * @throws  Exception
      */
     public function setUf($uf)
     {
-        if ( strlen($uf) != 2 ) {
+        if (strlen($uf) != 2) {
             throw new Exception('A UF deve conter 2 caracteres');
         }
 
@@ -247,7 +176,7 @@ class DAE
     }
 
     /**
-     * @param   string  $telefone
+     * @param string $telefone
      * @return  $this
      */
     public function setTelefone($telefone)
@@ -266,7 +195,7 @@ class DAE
     }
 
     /**
-     * @param   string  $documento
+     * @param string $documento
      * @return  $this;
      */
     public function setDocumento($documento)
@@ -285,7 +214,7 @@ class DAE
     }
 
     /**
-     * @param   int  $servico
+     * @param int $servico
      * @return  $this
      */
     public function setServico($servico)
@@ -304,7 +233,7 @@ class DAE
     }
 
     /**
-     * @param   string  $cobranca
+     * @param string $cobranca
      * @return  $this;
      */
     public function setCobranca($cobranca)
@@ -323,7 +252,7 @@ class DAE
     }
 
     /**
-     * @param   Carbon  $vencimento
+     * @param Carbon $vencimento
      * @return  $this
      */
     public function setVencimento(Carbon $vencimento)
@@ -342,7 +271,7 @@ class DAE
     }
 
     /**
-     * @param   int  $tipoIdentificacao
+     * @param int $tipoIdentificacao
      * @return  $this
      */
     public function setTipoIdentificacao($tipoIdentificacao)
@@ -361,7 +290,7 @@ class DAE
     }
 
     /**
-     * @param   string  $mesReferencia
+     * @param string $mesReferencia
      * @return  $this
      */
     public function setMesReferencia($mesReferencia)
@@ -380,7 +309,7 @@ class DAE
     }
 
     /**
-     * @param   string  $historico
+     * @param string $historico
      * @return  $this
      */
     public function setHistorico($historico)
@@ -399,7 +328,7 @@ class DAE
     }
 
     /**
-     * @param   float|int|string  $valor
+     * @param float|int|string $valor
      * @return  $this
      */
     public function setValor($valor)
@@ -418,7 +347,7 @@ class DAE
     }
 
     /**
-     * @param   string|null  $codigoMunicipio
+     * @param string|null $codigoMunicipio
      * @return  $this
      */
     public function setCodigoMunicipio($codigoMunicipio)
@@ -437,7 +366,7 @@ class DAE
     }
 
     /**
-     * @param   int  $acrescimos
+     * @param int $acrescimos
      * @return  $this
      */
     public function setAcrescimos($acrescimos)
@@ -456,7 +385,7 @@ class DAE
     }
 
     /**
-     * @param   int  $juros
+     * @param int $juros
      * @return  $this
      */
     public function setJuros($juros)
@@ -475,7 +404,7 @@ class DAE
     }
 
     /**
-     * @param   int  $orgaoDestino
+     * @param int $orgaoDestino
      * @return  $this
      */
     public function setOrgaoDestino($orgaoDestino)
@@ -494,7 +423,7 @@ class DAE
     }
 
     /**
-     * @param   string  $empresa
+     * @param string $empresa
      * @return  $this
      */
     public function setEmpresa($empresa)
@@ -539,6 +468,14 @@ class DAE
     /**
      * @return false|string
      */
+    public function __toString()
+    {
+        return $this->render();
+    }
+
+    /**
+     * @return false|string
+     */
     public function render()
     {
         ob_start();
@@ -550,13 +487,5 @@ class DAE
         include(__DIR__ . '/../resources/view/dae.phtml');
 
         return ob_get_clean();
-    }
-
-    /**
-     * @return false|string
-     */
-    public function __toString()
-    {
-        return $this->render();
     }
 }

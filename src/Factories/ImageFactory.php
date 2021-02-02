@@ -2,7 +2,7 @@
 
 namespace Igrejanet\DAE\Factories;
 
-use Laminas\Barcode\Renderer\Image;
+use Laminas\Barcode\Renderer\RendererInterface;
 
 /**
  * ImageFactory
@@ -13,9 +13,9 @@ use Laminas\Barcode\Renderer\Image;
  */
 class ImageFactory
 {
-    public static function make(Image $image): string
+    public static function make(RendererInterface $barcode): string
     {
-        $renderer = $image->draw();
+        $renderer = $barcode->draw();
 
         ob_start();
 

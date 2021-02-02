@@ -20,6 +20,6 @@ class BarcodeFactory
         $barcodeOptions  = ['text' => $text, 'drawText' => false, 'barheight' => $barHeight];
         $rendererOptions = ['imageType' => 'jpg'];
 
-        return Barcode::factory(new Code25interleaved(), 'image', $barcodeOptions, $rendererOptions);
+        return Barcode::factory(new Code25interleaved($barcodeOptions), 'image', $rendererOptions);
     }
 }

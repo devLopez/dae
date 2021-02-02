@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Igrejanet\\Dae\\": "src/"
+            "Igrejanet\\DAE\\": "src/"
         },
         "files": [
             "src/helpers.php"

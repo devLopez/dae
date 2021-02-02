@@ -1,6 +1,6 @@
 <?php
 
-namespace Igrejanet\Dae\Factories;
+namespace Igrejanet\DAE\Factories;
 
 use Zend\Barcode\Renderer\Image;
 

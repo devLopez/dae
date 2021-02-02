@@ -2,7 +2,7 @@
 
 namespace Tests\Factories;
 
-use Igrejanet\Dae\Factories\BarcodeFactory;
+use Igrejanet\DAE\Factories\BarcodeFactory;
 use PHPUnit\Framework\TestCase;
 
 class BarcodeFactoryTest extends TestCase

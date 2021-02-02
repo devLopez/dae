@@ -3,7 +3,7 @@
 require_once('../vendor/autoload.php');
 
 use Carbon\Carbon;
-use Igrejanet\Dae\Dae;
+use Igrejanet\DAE\DAE;
 
 $data = [
     // Dados do Sacado
@@ -29,4 +29,4 @@ $data = [
     'empresa'           => '0213'
 ];
 
-echo new Dae($data);
+echo new DAE($data);

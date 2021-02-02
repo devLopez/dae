@@ -1,20 +1,19 @@
 <?php
 
-namespace Igrejanet\Dae;
+namespace Igrejanet\DAE;
 
 use Carbon\Carbon;
 use Exception;
-use Igrejanet\Dae\Factories\LinhaDigitavelFactory;
+use Igrejanet\DAE\Factories\LinhaDigitavelFactory;
 
 /**
  * Dae
  *
  * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
- * @version 1.0.0
- * @since   04/01/2018
+ * @version 2.0.0
  * @package Igrejanet\Dae
  */
-class Dae
+class DAE
 {
     /**
      * @var string

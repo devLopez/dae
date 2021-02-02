@@ -4,7 +4,7 @@ namespace Tests;
 
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
-use Igrejanet\Dae\Dae;
+use Igrejanet\DAE\DAE;
 
 class DaeTest extends TestCase
 {
@@ -34,10 +34,10 @@ class DaeTest extends TestCase
             'empresa'           => '0213'
         ];
 
-        $dae = new Dae($data);
+        $dae = new DAE($data);
 
-        $this->assertInstanceOf('Igrejanet\Dae\Dae', $dae);
-        $this->assertInternalType('string', $dae->render());
+        $this->assertInstanceOf(DAE::class, $dae);
+        $this->assertIsString($dae->render());
     }
 
     public function testHelpers()

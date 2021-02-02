@@ -1,10 +1,10 @@
 <?php
 
-namespace Igrejanet\Dae\Factories;
+namespace Igrejanet\DAE\Factories;
 
-use Igrejanet\Dae\Dae;
-use Igrejanet\Dae\Factories\BarcodeFactory;
-use Igrejanet\Dae\Factories\ImageFactory;
+use Igrejanet\DAE\DAE;
+use Igrejanet\DAE\Factories\BarcodeFactory;
+use Igrejanet\DAE\Factories\ImageFactory;
 use stdClass;
 
 /**
@@ -20,11 +20,11 @@ class LinhaDigitavelFactory
     const VERSAO_DAE = 12;
 
     /**
-     * @param   Dae  $dae
-     * @param   string  $nossoNumero
+     * @param   DAE    $dae
+     * @param   string $nossoNumero
      * @return  stdClass
      */
-    public static function make(Dae $dae, $nossoNumero)
+    public static function make(DAE $dae, $nossoNumero)
     {
         $inicio         = $dae->getCodigoEstadual();
         $empresa        = $dae->getEmpresa();

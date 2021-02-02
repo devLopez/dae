@@ -1,30 +1,25 @@
 <?php
 
-namespace Igrejanet\Dae\Factories;
+namespace Igrejanet\DAE\Factories;
 
-use Zend\Barcode\Barcode;
-use Zend\Barcode\Object\Code25interleaved;
+use Laminas\Barcode\Barcode;
+use Laminas\Barcode\Object\Code25interleaved;
+use Laminas\Barcode\Renderer\RendererInterface;
 
 /**
  * BarcodeFactory
  *
  * @author  Matheus Lopes Santos <fale_com_lopez@hotmail.com>
- * @version 1.0.0
- * @since   04/01/2019
+ * @version 2.0.0
  * @package Igrejanet\Dae\Factories
  */
 class BarcodeFactory
 {
-    /**
-     * @param   string  $text
-     * @param   int  $barHeight
-     * @return  \Zend\Barcode\Renderer\RendererInterface|\Zend\Barcode\Renderer\Image
-     */
-    public static function make($text, $barHeight = 80)
+    public static function make(string $text, $barHeight = 80): RendererInterface
     {
-        $barcodeOptions     = ['text' => $text, 'drawText'  => false, 'barheight' => $barHeight];
-        $rendererOptions    = ['imageType' => 'jpg'];
+        $barcodeOptions  = ['text' => $text, 'drawText' => false, 'barheight' => $barHeight];
+        $rendererOptions = ['imageType' => 'jpg'];
 
-        return Barcode::factory(new Code25interleaved($barcodeOptions, $rendererOptions),'image');
+        return Barcode::factory(new Code25interleaved(), 'image', $barcodeOptions, $rendererOptions);
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Tests\Factories;
 
-use Igrejanet\Dae\Factories\BarcodeFactory;
-use Igrejanet\Dae\Factories\ImageFactory;
+use Igrejanet\DAE\Factories\BarcodeFactory;
+use Igrejanet\DAE\Factories\ImageFactory;
 use PHPUnit\Framework\TestCase;
 
 class ImageFactoryTest extends TestCase

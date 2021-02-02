@@ -3,8 +3,8 @@
 namespace Igrejanet\DAE;
 
 use Carbon\Carbon;
-use Exception;
 use Igrejanet\DAE\Factories\LinhaDigitavelFactory;
+use InvalidArgumentException;
 use stdClass;
 
 /**
@@ -86,80 +86,51 @@ class DAE
         $this->linhaDigitavel = LinhaDigitavelFactory::make($this, $nossoNumero);
     }
 
-    /**
-     * @return string
-     */
-    public function getNome()
+    public function getNome(): string
     {
         return $this->nome;
     }
 
-    /**
-     * @param string $nome
-     * @return  $this
-     */
-    public function setNome($nome)
+    public function setNome(string $nome): DAE
     {
         $this->nome = $nome;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEndereco()
+    public function getEndereco(): string
     {
         return $this->endereco;
     }
 
-    /**
-     * @param string $endereco
-     * @return  $this
-     */
-    public function setEndereco($endereco)
+    public function setEndereco(string $endereco): DAE
     {
         $this->endereco = $endereco;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getMunicipio()
+    public function getMunicipio(): string
     {
         return $this->municipio;
     }
 
-    /**
-     * @param string $municipio
-     * @return  $this
-     */
-    public function setMunicipio($municipio)
+    public function setMunicipio(string $municipio): DAE
     {
         $this->municipio = $municipio;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getUf()
+    public function getUf(): string
     {
         return $this->uf;
     }
 
-    /**
-     * @param string $uf
-     * @return  $this
-     * @throws  Exception
-     */
-    public function setUf($uf)
+    public function setUf(string $uf): DAE
     {
         if (strlen($uf) != 2) {
-            throw new Exception('A UF deve conter 2 caracteres');
+            throw new InvalidArgumentException('A UF deve conter 2 caracteres');
         }
 
         $this->uf = $uf;
@@ -167,316 +138,204 @@ class DAE
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getTelefone()
+    public function getTelefone(): string
     {
         return $this->telefone;
     }
 
-    /**
-     * @param string $telefone
-     * @return  $this
-     */
-    public function setTelefone($telefone)
+    public function setTelefone(string $telefone): DAE
     {
         $this->telefone = $telefone;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getDocumento()
+    public function getDocumento(): string
     {
         return $this->documento;
     }
 
-    /**
-     * @param string $documento
-     * @return  $this;
-     */
-    public function setDocumento($documento)
+    public function setDocumento(string $documento): DAE
     {
         $this->documento = $documento;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getServico()
+    public function getServico(): int
     {
         return $this->servico;
     }
 
-    /**
-     * @param int $servico
-     * @return  $this
-     */
-    public function setServico($servico)
+    public function setServico(int $servico): DAE
     {
         $this->servico = $servico;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getCobranca()
+    public function getCobranca(): string
     {
         return $this->cobranca;
     }
 
-    /**
-     * @param string $cobranca
-     * @return  $this;
-     */
-    public function setCobranca($cobranca)
+    public function setCobranca(string $cobranca): DAE
     {
         $this->cobranca = $cobranca;
 
         return $this;
     }
 
-    /**
-     * @return Carbon
-     */
-    public function getVencimento()
+    public function getVencimento(): Carbon
     {
         return $this->vencimento;
     }
 
-    /**
-     * @param Carbon $vencimento
-     * @return  $this
-     */
-    public function setVencimento(Carbon $vencimento)
+    public function setVencimento(Carbon $vencimento): DAE
     {
         $this->vencimento = $vencimento;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getTipoIdentificacao()
+    public function getTipoIdentificacao(): int
     {
         return $this->tipoIdentificacao;
     }
 
-    /**
-     * @param int $tipoIdentificacao
-     * @return  $this
-     */
-    public function setTipoIdentificacao($tipoIdentificacao)
+    public function setTipoIdentificacao(int $tipoIdentificacao): DAE
     {
         $this->tipoIdentificacao = $tipoIdentificacao;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getMesReferencia()
+    public function getMesReferencia(): string
     {
         return $this->mesReferencia;
     }
 
-    /**
-     * @param string $mesReferencia
-     * @return  $this
-     */
-    public function setMesReferencia($mesReferencia)
+    public function setMesReferencia(string $mesReferencia): DAE
     {
         $this->mesReferencia = $mesReferencia;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getHistorico()
+    public function getHistorico(): string
     {
         return $this->historico;
     }
 
-    /**
-     * @param string $historico
-     * @return  $this
-     */
-    public function setHistorico($historico)
+    public function setHistorico(string $historico): DAE
     {
         $this->historico = $historico;
 
         return $this;
     }
 
-    /**
-     * @return float|int|string
-     */
-    public function getValor()
+    public function getValor(): float
     {
         return $this->valor;
     }
 
-    /**
-     * @param float|int|string $valor
-     * @return  $this
-     */
-    public function setValor($valor)
+    public function setValor(float $valor): DAE
     {
         $this->valor = number_format($valor, 2, ',', '');
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getCodigoMunicipio()
+    public function getCodigoMunicipio(): ?string
     {
         return $this->codigoMunicipio;
     }
 
-    /**
-     * @param string|null $codigoMunicipio
-     * @return  $this
-     */
-    public function setCodigoMunicipio($codigoMunicipio)
+    public function setCodigoMunicipio(?string $codigoMunicipio): DAE
     {
         $this->codigoMunicipio = $codigoMunicipio;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getAcrescimos()
+    public function getAcrescimos(): float
     {
         return $this->acrescimos;
     }
 
-    /**
-     * @param int $acrescimos
-     * @return  $this
-     */
-    public function setAcrescimos($acrescimos)
+    public function setAcrescimos(float $acrescimos): DAE
     {
         $this->acrescimos = $acrescimos;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getJuros()
+    public function getJuros(): float
     {
         return $this->juros;
     }
 
-    /**
-     * @param int $juros
-     * @return  $this
-     */
-    public function setJuros($juros)
+    public function setJuros(int $juros): DAE
     {
         $this->juros = $juros;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getOrgaoDestino()
+    public function getOrgaoDestino(): int
     {
         return $this->orgaoDestino;
     }
 
-    /**
-     * @param int $orgaoDestino
-     * @return  $this
-     */
-    public function setOrgaoDestino($orgaoDestino)
+    public function setOrgaoDestino(int $orgaoDestino): DAE
     {
         $this->orgaoDestino = $orgaoDestino;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEmpresa()
+    public function getEmpresa(): string
     {
         return $this->empresa;
     }
 
-    /**
-     * @param string $empresa
-     * @return  $this
-     */
-    public function setEmpresa($empresa)
+    public function setEmpresa(string $empresa): DAE
     {
         $this->empresa = $empresa;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getTaxa()
+    public function getTaxa(): int
     {
         return $this->taxa;
     }
 
-    /**
-     * @param int $taxa
-     */
-    public function setTaxa($taxa)
+    public function setTaxa(int $taxa): DAE
     {
         $this->taxa = $taxa;
+
+        return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getCodigoEstadual()
+    public function getCodigoEstadual(): int
     {
         return $this->codigoEstadual;
     }
 
-    /**
-     * @param int $codigoEstadual
-     */
-    public function setCodigoEstadual($codigoEstadual)
+    public function setCodigoEstadual(int $codigoEstadual): DAE
     {
         $this->codigoEstadual = $codigoEstadual;
+
+        return $this;
     }
 
-    /**
-     * @return false|string
-     */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->render();
     }
 
-    /**
-     * @return false|string
-     */
-    public function render()
+    public function render(): string
     {
         ob_start();
 

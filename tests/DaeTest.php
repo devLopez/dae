@@ -3,8 +3,8 @@
 namespace Tests;
 
 use Carbon\Carbon;
-use PHPUnit\Framework\TestCase;
 use Igrejanet\DAE\DAE;
+use PHPUnit\Framework\TestCase;
 
 class DaeTest extends TestCase
 {
@@ -42,8 +42,8 @@ class DaeTest extends TestCase
 
     public function testHelpers()
     {
-        $strZero    = fillZero(71, 7);
-        $blanked    = fillBlank(71, 7);
+        $strZero = fillZero(71, 7);
+        $blanked = fillBlank(71, 7);
 
         $this->assertEquals('0000071', $strZero);
         $this->assertEquals('71     ', $blanked);

@@ -3,6 +3,7 @@
 namespace Tests\Factories;
 
 use Igrejanet\DAE\Factories\BarcodeFactory;
+use Laminas\Barcode\Renderer\RendererInterface;
 use PHPUnit\Framework\TestCase;
 
 class BarcodeFactoryTest extends TestCase
@@ -11,6 +12,6 @@ class BarcodeFactoryTest extends TestCase
     {
         $factory = BarcodeFactory::make('123456');
 
-        $this->assertInstanceOf('Zend\Barcode\Renderer\Image', $factory);
+        $this->assertInstanceOf(RendererInterface::class, $factory);
     }
 }

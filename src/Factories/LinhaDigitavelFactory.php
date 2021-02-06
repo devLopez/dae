@@ -3,6 +3,7 @@
 namespace Igrejanet\DAE\Factories;
 
 use Igrejanet\DAE\DAE;
+use Igrejanet\DAE\Utils;
 use stdClass;
 
 /**
@@ -26,15 +27,15 @@ class LinhaDigitavelFactory
         $taxa         = $dae->getTaxa();
 
         // Deixamos o valor plano, sem pontuação, e preenche com zeros à esquerda
-        $valor  = fillZero(preg_replace("/[^0-9]/", '', $valor), 11);
+        $valor  = Utils::fillZero(preg_replace("/[^0-9]/", '', $valor), 11);
         $versao = self::VERSAO_DAE;
 
         $campos = $valor . $empresa . $vencimento . $versao . $nossoNumero . $taxa . $orgaoDestino;
 
-        $codigoBarra = $inicio . modulo10($inicio . $campos) . $campos;
+        $codigoBarra = $inicio . Utils::modulo10($inicio . $campos) . $campos;
 
         $linhaDigitavel = preg_replace_callback('/([0-9]{11})/', function ($match) {
-            return $match[1] . ' ' . modulo10($match[1]) . ' ';
+            return $match[1] . ' ' . Utils::modulo10($match[1]) . ' ';
         }, $codigoBarra);
 
         $barcode = BarcodeFactory::make($codigoBarra, 50);

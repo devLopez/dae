@@ -54,7 +54,7 @@ class Utils
         return $dig;
     }
 
-    function modulo10($numero): int
+    public static function modulo10($numero): int
     {
         $mult = 2;
         $dig  = 0;
@@ -89,8 +89,8 @@ class Utils
 
     public static function digitoVerificador($numero)
     {
-        $dg10 = modulo10($numero);
-        $dg11 = modulo11($numero . $dg10);
+        $dg10 = static::modulo10($numero);
+        $dg11 = static::modulo11($numero . $dg10);
 
         return $dg10 . $dg11;
     }

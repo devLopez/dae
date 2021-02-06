@@ -7,8 +7,12 @@ use PHPUnit\Framework\TestCase;
 
 class UtilsTest extends TestCase
 {
-    public function testFillZero()
+    public function testHelpers()
     {
-        $this->assertEquals('002', Utils::fillZero(2, 3));
+        $strZero = Utils::fillZero(71, 7);
+        $blanked = Utils::fillBlank(71, 7);
+
+        $this->assertEquals('0000071', $strZero);
+        $this->assertEquals('71     ', $blanked);
     }
 }

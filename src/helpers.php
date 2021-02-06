@@ -1,11 +1,7 @@
 <?php
 
 /**
- * Preenche uma string com zeros à esquerda
- *
- * @param   mixed  $input
- * @param   mixed  $length
- * @return  string
+ * @deprecated
  */
 function fillZero($input, $length)
 {
@@ -13,11 +9,7 @@ function fillZero($input, $length)
 }
 
 /**
- * Preenche uma string com espaços em branco à direita
- *
- * @param   mixed  $input
- * @param   mixed  $length
- * @return  string
+ * @deprecated
  */
 function fillBlank($input, $length)
 {
@@ -25,10 +17,7 @@ function fillBlank($input, $length)
 }
 
 /**
- * Realiza o cálculo do módulo 11 de um número
- *
- * @param   int  $numero
- * @return  float|int
+ * @deprecated
  */
 function modulo11($numero)
 {
@@ -62,10 +51,7 @@ function modulo11($numero)
 }
 
 /**
- * Realiza o cálculo do módulo 10 de um número
- *
- * @param   int $numero
- * @return  bool|float|int|string
+ * @deprecated
  */
 function modulo10($numero)
 {
@@ -102,10 +88,7 @@ function modulo10($numero)
 }
 
 /**
- * Realiza o cálculo do dígito verificador do Nosso Número
- *
- * @param   int  $numero
- * @return  string
+ * @deprecated
  */
 function digitoVerificador($numero)
 {

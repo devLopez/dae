@@ -41,15 +41,6 @@ class DaeTest extends TestCase
         $this->assertIsString($dae->toHTML());
     }
 
-    public function testHelpers()
-    {
-        $strZero = fillZero(71, 7);
-        $blanked = fillBlank(71, 7);
-
-        $this->assertEquals('0000071', $strZero);
-        $this->assertEquals('71     ', $blanked);
-    }
-
     public function testGetters()
     {
         $data = [

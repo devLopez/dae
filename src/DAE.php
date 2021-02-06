@@ -339,6 +339,10 @@ class DAE
 
     public function render(): string
     {
+        if (!$this->isIsento() && (!$this->valor || $this->valor == 0)) {
+            throw new InvalidArgumentException('É necessário informar um valor para geração do DAE');
+        }
+
         ob_start();
 
         $data = get_object_vars($this);

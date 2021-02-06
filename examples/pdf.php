@@ -32,5 +32,5 @@ $data = [
 $dae = new DAE($data);
 
 header('Content-Type: application/pdf');
-header('Content-Disposition: attachment; filename="file.pdf"');
+header('Content-Disposition: inline; filename="file.pdf"');
 echo $dae->toPDF();

@@ -352,7 +352,7 @@ class DAE implements Rederable
         return $this->toHTML();
     }
 
-    public function toHTML(): string
+    public function toHTML(bool $forPDFPrinting = false): string
     {
         if (!$this->isIsento() && (!$this->valor || $this->valor == 0)) {
             throw new InvalidArgumentException('É necessário informar um valor para geração do DAE');
@@ -364,14 +364,18 @@ class DAE implements Rederable
 
         extract($data);
 
-        include(__DIR__ . '/../resources/view/dae.phtml');
+        $forPDFPrinting
+            ? include(__DIR__ . '/../resources/view/dae-pdf.phtml')
+            : include(__DIR__ . '/../resources/view/dae.phtml');
 
         return ob_get_clean();
     }
 
     public function toPDF(): string
     {
-        return $this->pdf->getOutputFromHtml($this->toHTML());
+        return $this->pdf->getOutputFromHtml(
+            $this->toHTML(true)
+        );
     }
 
     public function bootstrapPDFRenderer()

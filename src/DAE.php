@@ -4,7 +4,9 @@ namespace Igrejanet\DAE;
 
 use Carbon\Carbon;
 use Igrejanet\DAE\Factories\LinhaDigitavelFactory;
+use Igrejanet\DAE\Interfaces\Rederable;
 use InvalidArgumentException;
+use Knp\Snappy\Pdf;
 use stdClass;
 
 /**
@@ -14,7 +16,7 @@ use stdClass;
  * @version 2.0.0
  * @package Igrejanet\Dae
  */
-class DAE
+class DAE implements Rederable
 {
     protected string $nome;
 
@@ -62,6 +64,8 @@ class DAE
 
     protected bool $isento = false;
 
+    protected Pdf $pdf;
+
     public function __construct(array $dados)
     {
         foreach ($dados as $key => $item) {
@@ -70,6 +74,7 @@ class DAE
             $this->$method($item);
         }
 
+        $this->bootstrapPDFRenderer();
         $this->geraNossoNumero();
     }
 
@@ -332,12 +337,22 @@ class DAE
         return $this;
     }
 
-    public function __toString(): string
+    public function isIsento(): bool
     {
-        return $this->render();
+        return $this->isento;
     }
 
-    public function render(): string
+    public function setIsento(bool $isento): void
+    {
+        $this->isento = $isento;
+    }
+
+    public function __toString(): string
+    {
+        return $this->toHTML();
+    }
+
+    public function toHTML(): string
     {
         if (!$this->isIsento() && (!$this->valor || $this->valor == 0)) {
             throw new InvalidArgumentException('É necessário informar um valor para geração do DAE');
@@ -354,13 +369,22 @@ class DAE
         return ob_get_clean();
     }
 
-    public function isIsento(): bool
+    public function toPDF(): string
     {
-        return $this->isento;
+        return $this->pdf->getOutputFromHtml($this->toHTML());
     }
 
-    public function setIsento(bool $isento): void
+    public function bootstrapPDFRenderer()
     {
-        $this->isento = $isento;
+        $this->pdf = new Pdf(__DIR__ . '/../vendor/bin/wkhtmltopdf-amd64');
+    }
+
+    public function setPDFGeneratorBinary(string $binary)
+    {
+        if (!file_exists($binary)) {
+            throw new InvalidArgumentException('The generator binary not exists');
+        }
+
+        $this->pdf->setBinary($binary);
     }
 }

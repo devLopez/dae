@@ -14,7 +14,9 @@
         "php": "^7.4|^8.0",
         "nesbot/carbon": "^2.44",
         "laminas/laminas-barcode": "^2.8",
-        "ext-gd": "*"
+        "ext-gd": "*",
+        "knplabs/knp-snappy": "^1.2",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x"
     },
     "autoload": {
         "psr-4": {

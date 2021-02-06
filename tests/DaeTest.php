@@ -48,4 +48,49 @@ class DaeTest extends TestCase
         $this->assertEquals('0000071', $strZero);
         $this->assertEquals('71     ', $blanked);
     }
+
+    public function testGetters()
+    {
+        $data = [
+            // Dados do Sacado
+            'nome'      => 'Matheus Lopes Santos',
+            'endereco'  => 'Rua dos Jesuítas, 88, Nª Sª das Graças',
+            'municipio' => 'Montes Claros',
+            'uf'        => 'MG',
+            'telefone'  => '(38) 99183-9930',
+            'documento' => '101.384.146-88',
+
+            // Dados da Cobrança
+            'cobranca'          => '201600180',
+            'vencimento'        => new Carbon('2019-01-10'),
+            'tipoIdentificacao' => 4,
+            'mesReferencia'     => Carbon::now()->format('m/Y'),
+            'historico'         => '',
+            'valor'             => 90,
+
+            // Dados repassados pelo estado de minas gerais
+            'codigoEstadual'    => 856,
+            'servico'           => 71,
+            'orgaoDestino'      => 321,
+            'empresa'           => '0213'
+        ];
+
+        $dae = new DAE($data);
+
+        $this->assertEquals($data['nome'], $dae->getNome());
+        $this->assertEquals($data['endereco'], $dae->getEndereco());
+        $this->assertEquals($data['municipio'], $dae->getMunicipio());
+        $this->assertEquals($data['uf'], $dae->getUf());
+        $this->assertEquals($data['telefone'], $dae->getTelefone());
+        $this->assertEquals($data['documento'], $dae->getDocumento());
+        $this->assertEquals($data['cobranca'], $dae->getCobranca());
+        $this->assertEquals($data['vencimento'], $dae->getVencimento());
+        $this->assertEquals($data['tipoIdentificacao'], $dae->getTipoIdentificacao());
+        $this->assertEquals($data['historico'], $dae->getHistorico());
+        $this->assertEquals($data['valor'], $dae->getValor());
+        $this->assertEquals($data['codigoEstadual'], $dae->getCodigoEstadual());
+        $this->assertEquals($data['servico'], $dae->getServico());
+        $this->assertEquals($data['orgaoDestino'], $dae->getOrgaoDestino());
+        $this->assertEquals($data['empresa'], $dae->getEmpresa());
+    }
 }

@@ -450,7 +450,11 @@
 
                                 <br>
 
-                                <font size="2">Linha Digitável: <?= $linhaDigitavel->linhaDigitavel ?></font>
+                                <font size="2">
+                                    <?php if(!$isento) : ?>
+                                        Linha Digitável: <?= $linhaDigitavel->linhaDigitavel ?>
+                                    <?php endif ?>
+                                </font>
                             </td>
                         </tr>
 
@@ -504,7 +508,11 @@
                                             <font size="2"><b>TOTAL</b></font>
                                         </td>
                                         <td width="202" align="center" valign="middle">
-                                            R$&nbsp;<?= number_format($valor, 2, ',', '') ?>
+                                            <?php if($isento) : ?>
+                                                <b>ISENTO</b>
+                                            <?php else : ?>
+                                                R$&nbsp;<?= number_format($valor, 2, ',', '') ?>
+                                            <?php endif ?>
                                         </td>
                                         <td width="10" height="60"></td>
                                     </tr>
@@ -549,14 +557,20 @@
                         <tr>
                             <td width="10" rowspan="2" height="72"></td>
                             <td align="center" valign="bottom">
-                                <font size="3"><?= $linhaDigitavel->linhaDigitavel ?></font>
+                                <font size="3">
+                                    <?php if (!$isento) : ?>
+                                    <?= $linhaDigitavel->linhaDigitavel ?>
+                                    <?php endif; ?>
+                                </font>
                             </td>
                             <td width="10" rowspan="2"></td>
                         </tr>
 
                         <tr>
                             <td align="center" valign="top">
+                                <?php if (!$isento) : ?>
                                 <img src='data:image/jpeg;base64,<?= $linhaDigitavel->codigoImpresso ?>' alt='Código de Barras'>
+                                <?php endif; ?>
                             </td>
                         </tr>
 
@@ -940,7 +954,13 @@
                                                         </font>
                                                     </td>
                                                     <td width="73%" align="right" valign="middle">
-                                                        <font size="2">R$&nbsp;<?= number_format($valor, 2, ',', '') ?></font>
+                                                        <font size="2">
+                                                            <?php if($isento) : ?>
+                                                                <b>ISENTO</b>
+                                                            <?php else : ?>
+                                                                R$&nbsp;<?= number_format($valor, 2, ',', '') ?>
+                                                            <?php endif ?>
+                                                        </font>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -999,7 +1019,11 @@
                                                     </td>
                                                     <td width="73%" align="right" valign="middle">
                                                         <font size="2">
-                                                            <b>R$&nbsp;<?= number_format($valor, 2, ',', '') ?></b>
+                                                            <?php if ($isento) : ?>
+                                                                <b>ISENTO</b>
+                                                            <?php else :?>
+                                                                <b>R$&nbsp;<?= number_format($valor, 2, ',', '') ?></b>
+                                                            <?php endif; ?>
                                                         </font>
                                                     </td>
                                                 </tr>

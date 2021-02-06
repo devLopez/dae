@@ -40,7 +40,7 @@ class DAE
 
     protected string $historico;
 
-    protected float $valor;
+    protected ?float $valor = null;
 
     protected ?string $codigoMunicipio = null;
 
@@ -59,6 +59,8 @@ class DAE
     protected int $taxa = 0;
 
     protected int $codigoEstadual;
+
+    protected bool $isento = false;
 
     public function __construct(array $dados)
     {
@@ -234,12 +236,12 @@ class DAE
         return $this;
     }
 
-    public function getValor(): float
+    public function getValor(): ?float
     {
         return $this->valor;
     }
 
-    public function setValor(float $valor): DAE
+    public function setValor(?float $valor): DAE
     {
         $this->valor = $valor;
 
@@ -346,5 +348,15 @@ class DAE
         include(__DIR__ . '/../resources/view/dae.phtml');
 
         return ob_get_clean();
+    }
+
+    public function isIsento(): bool
+    {
+        return $this->isento;
+    }
+
+    public function setIsento(bool $isento): void
+    {
+        $this->isento = $isento;
     }
 }

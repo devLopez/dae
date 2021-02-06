@@ -32,6 +32,13 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "phpmd/phpmd": "^2.9"
+    },
+    "scripts": {
+        "ci": [
+            "./vendor/bin/phpmd src text ./phpmd.xml",
+            "./vendor/bin/phpunit"
+        ]
     }
 }

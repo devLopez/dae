@@ -80,12 +80,11 @@ class DAE implements Rederable
 
     protected function geraNossoNumero()
     {
-        $nossoNumero = fillZero($this->servico, 2) . fillZero($this->cobranca, 9);
-        $nossoNumero .= digitoVerificador($nossoNumero);
+        $nossoNumero = Utils::nossoNumero($this);
 
         $this->geraCodigoBarras($nossoNumero);
 
-        $this->nossoNumero = preg_replace('/([0-9]{2})([0-9]{9})([0-9]{2})/', '\1-\2/\3', $nossoNumero);
+        $this->nossoNumero = Utils::formatNossoNumero($nossoNumero);
     }
 
     protected function geraCodigoBarras(string $nossoNumero)

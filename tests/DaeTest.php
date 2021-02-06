@@ -38,7 +38,7 @@ class DaeTest extends TestCase
         $dae = new DAE($data);
 
         $this->assertInstanceOf(DAE::class, $dae);
-        $this->assertIsString($dae->render());
+        $this->assertIsString($dae->toHTML());
     }
 
     public function testHelpers()
@@ -124,6 +124,6 @@ class DaeTest extends TestCase
         ];
 
         $dae = new DAE($data);
-        $dae->render();
+        $dae->toHTML();
     }
 }
